@@ -1,7 +1,10 @@
+import Dice from './Dice';
+
 function App() {
     return (
         <div>
-            App 컴포넌트!
+            <h1>주사위 게임</h1>
+            <Dice color="red"/>
         </div>
     );
 }
