@@ -15,8 +15,7 @@ function App() {
     const nextNum = random(6);
     setNum(nextNum);
     setSum(sum + nextNum);
-    gameHistory.push(nextNum);
-    setGameHistory(gameHistory);
+    setGameHistory([...gameHistory, nextNum]);
   }
 
   const handleClick2 = () => {
@@ -36,6 +35,7 @@ function App() {
         <h2>나</h2>
         <Dice color="blue" num={num} />
         <div>총점: {sum}</div>
+        <div>기록: {gameHistory.join(", ")}</div>
       </div>
     </div>
   );
