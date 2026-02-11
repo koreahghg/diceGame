@@ -8,14 +8,21 @@ function random(n) {
 
 function App() {
   const [num, setNum] = useState(1);
+  const [sum, setSum] = useState(0);
+  const [gameHistory, setGameHistory] = useState([]);
 
   const handleClick1 = () => {
     const nextNum = random(6);
     setNum(nextNum);
+    setSum(sum + nextNum);
+    gameHistory.push(nextNum);
+    setGameHistory(gameHistory);
   }
 
   const handleClick2 = () => {
     setNum(1);
+    setSum(0);
+    setGameHistory([]);
   }
 
   return (
@@ -25,7 +32,11 @@ function App() {
         <Button onClick={handleClick1}>던지기</Button>
         <Button onClick={handleClick2}>처음부터</Button>
       </div>
-      <Dice color="red" num={num} />
+      <div>
+        <h2>나</h2>
+        <Dice color="blue" num={num} />
+        <div>총점: {sum}</div>
+      </div>
     </div>
   );
 }
