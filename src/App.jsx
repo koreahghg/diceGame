@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
-import Dice from "./Dice";
+import Board from "./Board";
+
 
 function random(n) {
     return Math.ceil(Math.random() * n);
@@ -32,10 +33,8 @@ function App() {
         <Button onClick={handleClick2}>처음부터</Button>
       </div>
       <div>
-        <h2>나</h2>
-        <Dice color="blue" num={num} />
-        <div>총점: {sum}</div>
-        <div>기록: {gameHistory.join(", ")}</div>
+        <Board name="나" color="blue" />
+        <Board name="상대" color="red" />
       </div>
     </div>
   );
