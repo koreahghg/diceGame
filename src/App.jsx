@@ -2,28 +2,25 @@ import { useState } from "react";
 import Button from "./Button";
 import Board from "./Board";
 
-
 function random(n) {
-    return Math.ceil(Math.random() * n);
+  return Math.ceil(Math.random() * n);
 }
 
 function App() {
-  const [num, setNum] = useState(1);
-  const [sum, setSum] = useState(0);
-  const [gameHistory, setGameHistory] = useState([]);
+  const [myHistory, setMyHistory] = useState([]);
+  const [otherHistory, setOtherHistory] = useState([]);
 
   const handleClick1 = () => {
-    const nextNum = random(6);
-    setNum(nextNum);
-    setSum(sum + nextNum);
-    setGameHistory([...gameHistory, nextNum]);
-  }
+    const nextMyNum = random(6);
+    const nextOtherNum = random(6);
+    setMyHistory([...myHistory, nextMyNum]);
+    setOtherHistory([...otherHistory, nextOtherNum]);
+  };
 
   const handleClick2 = () => {
-    setNum(1);
-    setSum(0);
-    setGameHistory([]);
-  }
+    setMyHistory([]);
+    setOtherHistory([]);
+  };
 
   return (
     <div>
@@ -33,8 +30,18 @@ function App() {
         <Button onClick={handleClick2}>처음부터</Button>
       </div>
       <div>
-        <Board name="나" color="blue" />
-        <Board name="상대" color="red" />
+        <Board
+          name="나"
+          color="blue"
+          gameHistory={myHistory}
+          isLoser={num < otherNum}
+        />
+        <Board
+          name="상대"
+          color="red"
+          gameHistory={otherHistory}
+          isLoser={otherNum < num}
+        />
       </div>
     </div>
   );
