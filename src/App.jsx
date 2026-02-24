@@ -22,6 +22,9 @@ function App() {
     setOtherHistory([]);
   };
 
+  const myNum = myHistory[myHistory.length - 1] || 1;
+  const otherNum = otherHistory[otherHistory.length - 1] || 1;
+
   return (
     <div>
       <h1>주사위 게임</h1>
@@ -34,13 +37,13 @@ function App() {
           name="나"
           color="blue"
           gameHistory={myHistory}
-          isLoser={num < otherNum}
+          isLoser={myNum < otherNum}
         />
         <Board
           name="상대"
           color="red"
           gameHistory={otherHistory}
-          isLoser={otherNum < num}
+          isLoser={otherNum < myNum}
         />
       </div>
     </div>
