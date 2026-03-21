@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import Board from "./Board";
+import Styles from "./App.module.css";
 
 function random(n) {
   return Math.ceil(Math.random() * n);
@@ -26,11 +27,17 @@ function App() {
   const otherNum = otherHistory[otherHistory.length - 1] || 1;
 
   return (
-    <div>
-      <h1>주사위 게임</h1>
+    <div className={Styles.main}>
+      <div className={Styles.header}>
+        <h1 className={Styles.title}>주사위 게임</h1>
+        <Button color="blue" onClick={handleClick1}>
+          던지기
+        </Button>
+      </div>
       <div>
-        <Button onClick={handleClick1}>던지기</Button>
-        <Button onClick={handleClick2}>처음부터</Button>
+        <Button color="navy" onClick={handleClick2}>
+          처음부터
+        </Button>
       </div>
       <div>
         <Board
