@@ -34,12 +34,10 @@ function App() {
           던지기
         </Button>
       </div>
-      <div>
-        <Button color="navy" onClick={handleClick2}>
-          처음부터
-        </Button>
-      </div>
-      <div>
+      <hr className={Styles.divider} />
+      <h2 className={Styles.subtitle}>경기 결과</h2>
+
+      <div className={Styles.boards}>
         <Board
           name="나"
           color="blue"
@@ -52,6 +50,11 @@ function App() {
           gameHistory={otherHistory}
           isLoser={otherNum < myNum}
         />
+      </div>
+      <div className={Styles.resetButton}>
+        <Button color="navy" onClick={handleClick2}>
+          처음부터
+        </Button>
       </div>
     </div>
   );
